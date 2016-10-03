@@ -27,9 +27,16 @@ public class Calculator {
         sum(firstNumber, secondNumber);
         difference(firstNumber, secondNumber);
         multiplication(firstNumber, secondNumber);
+
         if (Double.isInfinite(firstNumber / secondNumber)) {
             System.out.println("No division result. (Forbidden operation)");
-        } else division(firstNumber, secondNumber);
+            System.exit(0);
+        }
+        if (Double.isNaN(firstNumber / secondNumber)){
+            System.out.println("No division result (0 / 0)");
+            System.exit(0);
+        }
+        division(firstNumber, secondNumber);
     }
 
     /**
