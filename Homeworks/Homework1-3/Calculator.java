@@ -27,7 +27,9 @@ public class Calculator {
         sum(firstNumber, secondNumber);
         difference(firstNumber, secondNumber);
         multiplication(firstNumber, secondNumber);
-        division(firstNumber, secondNumber);
+        if (Double.isInfinite(firstNumber / secondNumber)) {
+            System.out.println("No division result. (Forbidden operation)");
+        } else division(firstNumber, secondNumber);
     }
 
     /**
@@ -63,11 +65,6 @@ public class Calculator {
     static void division (double firstNumber, double secondNumber){
         double x = firstNumber;
         double y = secondNumber;
-        double div = x / y;
-        if (y == 0) {
-            System.out.println("No division result. (Forbidden operation)");
-        } else {
-            System.out.println(x + " / " + y + " = " + div);
-        }
+        System.out.println(x + " / " + y + " = " + (x / y));
     }
 }
