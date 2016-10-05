@@ -22,10 +22,10 @@ public class QuadraticEquation {
             c = Double.parseDouble(args[2]);
         } catch (NumberFormatException e) {
             System.out.println ("Invalid number format.");
-            System.exit(0);
+            System.exit(1);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println ("Not enough arguments for quadratic equation.");
-            System.exit(0);
+            System.exit(1);
         }
 
         discriminant(a, b, c);
@@ -54,13 +54,12 @@ public class QuadraticEquation {
      */
     static void resultsOut (double a, double b, double c, double discriminant) {
 
-
         if (discriminant > 0) {
             defaultRoots(a, b, discriminant);
         } else if (discriminant < 0) {
             System.out.println("There are no real solutions: discriminant is negative.");
         } else if (Math.abs(discriminant) < Math.ulp(discriminant)) {
-            if (a == 0 && b == 0 && c == 0) {
+            if (Double.isInfinite(1 / a) && Double.isInfinite(1 / b) && Double.isInfinite(1 / c)) {
                 System.out.println("All arguments are null. The root of equation is not a number.");
             } else discriminantIsNull(a, b);
         }
