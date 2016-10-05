@@ -1,7 +1,7 @@
 /**
  * Counts the roots of quadratic equation with the arguments from the command line.
  * @author Petryakina
- * @version 0.5
+ * @version 0.6
  */
 public class QuadraticEquation {
     /**
