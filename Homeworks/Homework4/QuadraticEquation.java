@@ -1,7 +1,7 @@
 /**
  * Counts the roots of quadratic equation with the arguments from the command line.
  * @author Petryakina
- * @version 0.6
+ * @version 0.7
  */
 public class QuadraticEquation {
     /**
@@ -28,40 +28,61 @@ public class QuadraticEquation {
             System.exit(0);
         }
 
-
-        double discriminant = b * b - 4 * a * c;
-
-        System.out.println ("Your equation: " + a + "x^2 + " + b + "x + " + c + " = 0;");
-        System.out.println ("D = " + discriminant);
-        if (discriminant > 0) {
-            DefaultRoots(a, b, discriminant);
-        } else if (discriminant < 0){
-            System.out.println ("There are no real solutions: discriminant is negative.");
-        } else if (Math.abs (discriminant) < Math.ulp(discriminant)) {
-            if (a == 0  && b == 0 && c == 0) {
-                System.out.println ("All arguments are null. The root of equation is not a number.");
-            } else DiscriminantIsNull(a, b);
-        }
+        discriminant(a, b, c);
     }
 
+    /**
+     * Counting discriminant and outputting it with the whole equation.
+     * @param a Argument a.
+     * @param b Argument b.
+     * @param c Argument c.
+     */
+    static void discriminant (double a, double b, double c) {
+        double discriminant = b * b - 4 * a * c;
+
+        System.out.println("Your equation: " + a + "x^2 + " + b + "x + " + c + " = 0;");
+        System.out.println("D = " + discriminant);
+        resultsOut (a, b, c, discriminant);
+    }
+
+    /**
+     * According to the discriminant calls method fot getting roots.
+     * @param a Argument a.
+     * @param b Argument b.
+     * @param c Argument c.
+     * @param discriminant Discriminant.
+     */
+    static void resultsOut (double a, double b, double c, double discriminant) {
+
+
+        if (discriminant > 0) {
+            defaultRoots(a, b, discriminant);
+        } else if (discriminant < 0) {
+            System.out.println("There are no real solutions: discriminant is negative.");
+        } else if (Math.abs(discriminant) < Math.ulp(discriminant)) {
+            if (a == 0 && b == 0 && c == 0) {
+                System.out.println("All arguments are null. The root of equation is not a number.");
+            } else discriminantIsNull(a, b);
+        }
+    }
     /**
      * Method for counting roots when discriminant is positive and outputting the result.
      * @param a Argument a
      * @param b Argument b
      * @param discriminant Discriminant of the equation.
      */
-    static void DefaultRoots (double a, double b, double discriminant) {
+    static void defaultRoots (double a, double b, double discriminant) {
         double x1 = (- b  + Math.sqrt(discriminant)) / (2 * a);
         double x2 = (- b  - Math.sqrt(discriminant)) / (2 * a);
         System.out.println ("Roots: x1 = " + x1 + "; x2 = " + x2 + ".");
     }
 
     /**
-     * Method fot counting roots when discriminant is null and outputting information about descriminant and result.
+     * Method fot counting roots when discriminant is null and outputting information about discriminant and result.
      * @param a Argument a
      * @param b Argument b
      */
-    static void DiscriminantIsNull (double a, double b) {
+    static void discriminantIsNull (double a, double b) {
         double x = (- b) / (2 * a);
         System.out.println ("Discriminant is null, so the equation has only one real root (or two same roots): x1, x2 = " + x + ".");
 
