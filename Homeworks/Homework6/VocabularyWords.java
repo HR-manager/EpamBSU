@@ -8,11 +8,6 @@ import java.util.StringTokenizer;
  * @version 0.5
  */
 public class VocabularyWords extends Rule {
-    String line;
-
-    VocabularyWords (String line) {
-        this.line = line;
-    }
 
     /**
      * Creates tokens out of user string and adds them to the array.
@@ -21,20 +16,20 @@ public class VocabularyWords extends Rule {
      * @return true if the string contains any word from vocabulary
      */
     @Override
-    protected boolean checkLine() {
+    protected boolean checkLine(String line) {
         HashSet<String> words = new HashSet<String>();
 
         StringTokenizer tokenizer = new StringTokenizer(line);
 
-        while(tokenizer.hasMoreTokens()) {
-            words.add(tokenizer.nextToken());
+        while (tokenizer.hasMoreTokens()) {
+            words.add (tokenizer.nextToken());
         }
 
         String[] wordsToCheck = {"never", "deadline", "code", "english"};
 
         boolean doesContain = false;
-        for(int i = 0; i < wordsToCheck.length; ++i){
-            if(words.contains(wordsToCheck[i])) {
+        for (int i = 0; i < wordsToCheck.length; ++i) {
+            if (words.contains (wordsToCheck[i])) {
                 doesContain = true;
                 break;
             }
@@ -47,10 +42,6 @@ public class VocabularyWords extends Rule {
      */
     @Override
     public void printResult() {
-        if (checkLine() == true) {
-            System.out.println ("String contains a word from vocabulary.");
-        } else {
-            System.out.println ("There're no words from vocabulary in this string.");
-        }
+        System.out.println ("String contains a word from vocabulary.");
     }
 }

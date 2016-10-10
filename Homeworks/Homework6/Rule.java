@@ -4,7 +4,7 @@
  * @version 0.5
  */
 public abstract class Rule {
-    protected abstract boolean checkLine ();
+    protected abstract boolean checkLine (String line);
     public abstract void printResult ();
 
 }

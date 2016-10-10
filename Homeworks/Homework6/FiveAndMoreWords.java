@@ -8,18 +8,13 @@ import java.util.regex.Pattern;
  * @version 0.5
  */
 public class FiveAndMoreWords extends Rule {
-    String line;
-
-    FiveAndMoreWords (String line) {
-        this.line = line;
-    }
 
     /**
      * The regular expression pattern for checking the rule.
      * @return true if the string fit in the rule.
      */
     @Override
-    protected boolean checkLine () {
+    protected boolean checkLine (String line) {
         Pattern p = Pattern.compile ("^\\s*\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+.*$");
         Matcher m = p.matcher(line);
         return m.matches ();
@@ -28,9 +23,8 @@ public class FiveAndMoreWords extends Rule {
     /**
      * Prints if the string fits in the rule.
      */
+    @Override
     public void printResult () {
-        if (checkLine() == true) {
-            System.out.println("String consists of five or more words.");
-        }
+        System.out.println("String consists of five or more words.");
     }
 }
