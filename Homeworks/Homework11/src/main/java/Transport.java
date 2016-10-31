@@ -1,16 +1,12 @@
-
+/**
+ * An abstract class for transport movement types.
+ * Includes methods for counting time, cost and printing the efficiency.
+ * @author Petriakina
+ * @version 0.5
+ */
 public abstract class Transport implements MovementType {
-    double distance;
-    double speed;
-    double time;
-    double cost;
-    double fuel;
-    int passengersQuantity;
 
-    public double getTime () {
-
-        return time;
-    }
-
-
+    public abstract double getTime ();
+    public abstract double getCost ();
+    public abstract void efficiency ();
 }
