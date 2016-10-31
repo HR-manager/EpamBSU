@@ -1,6 +1,17 @@
 import java.io.File;
 
+/**
+ * Main class.
+ * Creates objects of the movement type classes. Calls their methods
+ * for achieving statistics for each type.
+ * @author Petriakina
+ * @version 0.5
+ */
 public class Main {
+
+    /**
+     * Main method.
+     */
     public static void main (String [] args) {
         File file = new File ("data.txt");
         ReadFile a = new ReadFile(file);

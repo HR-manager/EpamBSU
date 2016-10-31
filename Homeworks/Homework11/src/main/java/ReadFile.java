@@ -55,8 +55,16 @@ public class ReadFile {
         for (int i = 0; i < checkpointsLine.size(); i++) {
             String[] s = checkpointsLine.get(i).split(" ");
             Double [] a = new Double[2];
-            a[0] = Double.parseDouble(s[0]);
-            a[1] = Double.parseDouble(s[1]);
+            try {
+                a[0] = Double.parseDouble(s[0]);
+                a[1] = Double.parseDouble(s[1]);
+            } catch (NumberFormatException e) {
+                System.out.println("Error while reading file. Checkpoints must be numbers.");
+                System.exit(1);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Error while reading file. Empty coordinates detected.");
+                System.exit(1);
+            }
 
             checkpoints.add(a);
 
@@ -64,15 +72,16 @@ public class ReadFile {
             System.out.println (checkpoints.get(i)[1]);
         }
 
-        //System.out.println("checking x0 x1 " + checkpoints.get(0)[0] + "  " + checkpoints.get(checkpoints.size() - 1)[0]);
-        //System.out.println("checking y0 y1 " + checkpoints.get(0)[1] + "  " + checkpoints.get(checkpoints.size() - 1)[1]);
-
-        if ((checkpoints.get(0)[0] == checkpoints.get(checkpoints.size() - 1)[0])
-                && (checkpoints.get(0)[1] == checkpoints.get(checkpoints.size() - 1)[1])) {
-            System.out.println("Start and end points are the same. Correct your checkpoints.");
-            System.exit(0);
+        try {
+            if ((checkpoints.get(0)[0] - checkpoints.get(checkpoints.size() - 1)[0] == 0.0)
+                    && (checkpoints.get(0)[1] - checkpoints.get(checkpoints.size() - 1)[1]) == 0.0) {
+                System.out.println("Start and end points are the same. Correct your checkpoints.");
+                System.exit(0);
+            }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error while reading. Empty file.");
+            System.exit(1);
         }
-
         return checkpoints;
     }
 }

@@ -22,10 +22,7 @@ public class RouteCalculator {
      */
     public double calculate () {
         double route = 0.0;
-
-
-
-            for (int i = 0; i < checkpoints.size() - 1; i++) {
+        for (int i = 0; i < checkpoints.size() - 1; i++) {
                 double a = checkpoints.get(i + 1)[0] - checkpoints.get(i)[0];
                 double b = checkpoints.get(i + 1)[1] - checkpoints.get(i)[1];
                 route += Math.sqrt(a * a + b * b);
