@@ -5,12 +5,12 @@ import static org.testng.Assert.*;
 /**
  * Class for tests.
  * @author Petriakina
- * @version 1.0
+ * @version 1.5
  */
 public class TriangleTest {
 
     @DataProvider
-    public Object[][] checkFalse(){
+    public Object[][] checkInvalidValues(){
         return new Object[][]{
                 {Double.MAX_VALUE, Double.MAX_VALUE, 1.0},
                 {Double.MAX_VALUE, 1.0, Double.MAX_VALUE},
@@ -89,9 +89,9 @@ public class TriangleTest {
         };
     }
 
-    @org.testng.annotations.Test (dataProvider = "checkFalse")
-    public void testCheckFalse(Double a, Double b, Double c) throws Exception {
-        assertFalse(Triangle.triangleIsExist(a, b, c));
+    @org.testng.annotations.Test (dataProvider = "checkInvalidValues", expectedExceptions = Exception.class)
+    public void checkInvalidValues(Double a, Double b, Double c) throws Exception {
+        Triangle triangle = new Triangle(a, b, c);
     }
 
     @DataProvider
@@ -109,6 +109,32 @@ public class TriangleTest {
         double x = Double.parseDouble(a);
         double y = Double.parseDouble(b);
         double z = Double.parseDouble(c);
-        Triangle.type(x, y, z);
+        Triangle triangle = new Triangle(x, y, z);
+        triangle.type(x, y, z);
+    }
+
+    @DataProvider
+    public Object[][] checkType() {
+        return new Object[][] {
+                {8.0, 6.0, 10.0, 3},
+                {6.0, 8.0, 10.0, 3},
+                {10.0, 8.0, 6.0, 3},
+                {8.0, 10.0, 6.0, 3},
+                {6.0, 10.0, 8.0, 3},
+                {6.0, 8.0, 10.0, 3},
+                {10.0, 6.0, 8.0, 3},
+
+                {6.0, 6.0, 6.0, 1},
+
+                {39.0, 39.0, 30.0, 2},
+                {39.0, 30.0, 39.0, 2},
+                {30.0, 39.0, 39.0, 2},
+        };
+    }
+
+    @org.testng.annotations.Test (dataProvider = "checkType")
+    public void testType(Double a, Double b, Double c, int result) throws Exception {
+        Triangle triangle = new Triangle(a, b, c);
+        assertEquals(triangle.type(a, b, c), result);
     }
 }
