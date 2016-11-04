@@ -95,7 +95,7 @@ public class TriangleTest {
     }
 
     @DataProvider
-    public Object[][] checkText() {
+    public Object[][] checkForText() {
         return new Object[][]{
                 {"x", "x", "x"},
                 {"0.1", "x", "x"},
@@ -104,8 +104,8 @@ public class TriangleTest {
         };
     }
 
-    @org.testng.annotations.Test(dataProvider = "checkText", expectedExceptions = NumberFormatException.class)
-    public void testCheckText(String a, String b, String c) throws Exception {
+    @org.testng.annotations.Test(dataProvider = "checkForText", expectedExceptions = NumberFormatException.class)
+    public void testCheckForText(String a, String b, String c) throws Exception {
         double x = Double.parseDouble(a);
         double y = Double.parseDouble(b);
         double z = Double.parseDouble(c);

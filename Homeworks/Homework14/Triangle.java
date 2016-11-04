@@ -1,19 +1,24 @@
 import java.util.Scanner;
 
 /**
- * Class for defining the type of triangle.
+ * Class for creating triangle by its sides.
+ * Has methods for defining existence and a type of triangle.
  * @author Petryakina
- * @version 0.5
+ * @version 1.0
  */
 public class Triangle {
-    final int EQUILATERAL = 1; // равносторонний
-    final int ISOSCELES = 2;   // равнобедренный
+    final int EQUILATERAL = 1;
+    final int ISOSCELES = 2;
     final int SCALENE = 3;
     private double a;
     private double b;
     private double c;
     int type;
 
+    /**
+     * Constructor of the class.
+     * Creates an object as a consequence of its existence.
+     */
     Triangle (double a, double b, double c) throws Exception {
         if (triangleIsExist(a, b, c)) {
             this.a = a;
@@ -67,6 +72,7 @@ public class Triangle {
      * @param a side a
      * @param b side b
      * @param c side c
+     * @return the id of the type.
      */
     public int type(double a, double b, double c) {
         int type = 0;

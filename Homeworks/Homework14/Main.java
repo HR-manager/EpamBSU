@@ -25,7 +25,7 @@ public class Main {
     }
 
     /**
-     * Method returns the next double value from the scanner if it exiscts.
+     * Method returns the next double value from the scanner if it exists.
      * Else it returns null.
      * @param scan Scanner
      * @return nextDouble
