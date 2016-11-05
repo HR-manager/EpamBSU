@@ -1,7 +1,7 @@
 /**
  * This class is also for practising cmd work.
  * @author Petryakina
- * @version 0.5
+ * @version 1.0
  */
 
 public class HelloName {
